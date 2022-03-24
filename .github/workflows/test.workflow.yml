@@ -27,12 +27,13 @@ jobs:
       - name: ECHOE
         uses:
       - name: IF fail
-        if: failure()
-        uses: dacbd/create-issue-action@main         
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          title: TEST FAIL
-          body: | 
-            Les test ont échoués
-            Worflow name : '${{github.workflow}}'
-            Job name : '${{github.job}}'
+        if: ${{ failure() }}
+        uses: dacbd/create-issue-action@main
+          with:
+        token: ${{ github.token }}
+        title: Action workflow failed.
+        body: |
+        Workflow name - `${{ github.workflow }}`
+        Job -           `${{ github.job }}`
+        status -        `${{ job.status }}`
+      assignees: SomeUsername,AnotherUsername
