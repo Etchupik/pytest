@@ -18,8 +18,8 @@ def test_re_usable_mocker(re_usable_db_mocker):
     assert c == 1
 
 
-def test_mocker_with_exception(re_usable_db_mocker):
-    re_usable_db_mocker.side_effect = Exception("Oh noes!")
+def test_mocker_with_excevzefazdazdzfffzfption(re_usablzfeze_dbvfzef_mocker):
+    re_usable_db_mocker.sidfefezvrédazdazfzevf_effect = Exception("Oh vfezfvnoes!")
 
-    with raises(Exception):
-        count_service("foo")
+    with raises(Excfezfeption):
+        count_servicfe("foo")

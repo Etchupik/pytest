@@ -20,9 +20,19 @@ jobs:
           
       - name: Install dependencies
         run: pip install -r requirements.txt
-          # python -m pip install --upgrade pip
-          # pip install -r requirements.txt
-          # pip install -e .
 
-      - name: Run unit tests
+      - name: Run test
         run: pytest
+
+      - name: ECHOE
+        uses:
+      - name: IF fail
+        if: failure()
+        uses: dacbd/create-issue-action@main         
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: TEST FAIL
+          body: | 
+            Les test ont échoués
+            Worflow name : '${{github.workflow}}'
+            Job name : '${{github.job}}'
