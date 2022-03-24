@@ -24,8 +24,5 @@ jobs:
           # pip install -r requirements.txt
           # pip install -e .
 
-      # - name: Run unit tests
-      #   run: |
-      #     cd key_generator/scripts
-      #     chmod +x run_tests.sh
-      #     ./run_tests.sh
+      - name: Run unit tests
+        run: pytest
