@@ -24,14 +24,14 @@ jobs:
       - name: Run test
         run: pytest
 
-      - name: IF fail
+      - name: Create Issue on Failed workflow
         if: ${{ failure() }}
         uses: dacbd/create-issue-action@main
-          with:
-            token: ${{ github.token }}
-            title: Action workflow failed.
-            body: |
-              Workflow name - `${{ github.workflow }}`
-              Job -           `${{ github.job }}`
-              status -        `${{ job.status }}`
-            assignees: SomeUsername,AnotherUsername
+        with:
+          token: ${{ github.token }}
+          title: Action workflow failed.
+          body: |
+            Workflow name - `${{ github.workflow }}`
+            Job -           `${{ github.job }}`
+            status -        `${{ job.status }}`
+          assignees: SomeUsername,AnotherUsername
