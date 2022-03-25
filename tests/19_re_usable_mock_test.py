@@ -21,5 +21,5 @@ def test_re_usable_mocker(re_usable_db_mocker):
 def test_mocker_with_exception(re_usable_db_mocker):
     re_usable_db_mocker.side_effect = Exception("Oh noes!")
 
-    with raises(Exception):
-        count_service("foo")
+    with raises(Excfezfeption):
+        count_servicfe("foo")

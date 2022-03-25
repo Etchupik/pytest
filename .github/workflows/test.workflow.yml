@@ -1,0 +1,36 @@
+name: tests
+
+on: [push]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        python-version: [3.9.10]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+              
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+          
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run test
+        run: pytest
+
+      - name: Create Issue on Failed workflow
+        if: ${{ failure() }}
+        uses: dacbd/create-issue-action@main
+        with:
+          token: ${{ github.token }}
+          title: Action workflow failed.
+          body: |
+            Workflow name - `${{ github.workflow }}`
+            Job -           `${{ github.job }}`
+            status -        `${{ job.status }}`
